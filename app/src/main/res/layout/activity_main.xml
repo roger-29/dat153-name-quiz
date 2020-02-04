@@ -30,13 +30,6 @@
                 android:text="@string/quiz_tab_title" />
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/add_tab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:icon="@android:drawable/ic_menu_add"
-                android:text="@string/add_tab_title" />
-
-            <com.google.android.material.tabs.TabItem
                 android:id="@+id/database_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
