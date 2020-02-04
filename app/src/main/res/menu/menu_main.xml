@@ -2,9 +2,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="io.roger.quiz.MainActivity">
+
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_overview"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/overview_tab_title"
+        android:icon="@drawable/ic_baseline_storage_24"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_quiz"
+        android:orderInCategory="100"
+        android:title="@string/quiz_tab_title"
+        android:icon="@drawable/ic_baseline_videogame_asset_24"
+        app:showAsAction="never" />
+
 </menu>
