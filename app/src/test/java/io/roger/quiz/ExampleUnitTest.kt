@@ -1,4 +1,4 @@
-package com.sondregj.thenamequiz
+package io.roger.quiz
 
 import org.junit.Test
 

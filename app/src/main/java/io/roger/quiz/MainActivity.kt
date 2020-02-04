@@ -1,4 +1,4 @@
-package com.sondregj.thenamequiz
+package io.roger.quiz
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
