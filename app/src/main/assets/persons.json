@@ -1,12 +1,12 @@
 [
   {
     "id": 0,
-    "name": "Artin Molland",
-    "photo": "artinmolland.png"
+    "name": "Daenerys Targaryen",
+    "photo": "daenerys"
   },
   {
     "id": 1,
-    "name": "Arne Beyati",
-    "photo": "arnebeyati.png"
+    "name": "Jon Snow",
+    "photo": "jonsnow"
   }
 ]
