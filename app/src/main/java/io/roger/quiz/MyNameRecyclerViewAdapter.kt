@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import io.roger.quiz.R
 
 import io.roger.quiz.dummy.DummyContent.DummyItem
 
-import kotlinx.android.synthetic.main.fragment_overview.view.*
+import kotlinx.android.synthetic.main.list_item.view.*
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem].
@@ -21,20 +20,20 @@ class MyNameRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_overview, parent, false)
+            .inflate(R.layout.list_item, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
+        //holder.idView.text = item.id
         holder.contentView.text = item.content
     }
 
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        val idView: TextView = view.item_number
+        //val idView: TextView = view.item_number
         val contentView: TextView = view.content
 
         override fun toString(): String {

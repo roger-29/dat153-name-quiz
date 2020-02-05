@@ -19,7 +19,7 @@
         android:id="@+id/people"
         android:name="io.roger.quiz.fragments.PersonListFragment"
         android:label="fragment_people"
-        tools:layout="@layout/fragment_overview">
+        tools:layout="@layout/list_item">
         <action
             android:id="@+id/action_people_to_quiz"
             app:destination="@id/quiz" />
