@@ -53,7 +53,7 @@ dependencies {
     // Material Design
     implementation "com.google.android.material:material:$material_version"
 
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation "com.google.code.gson:gson:$gson_version"
 
     // Work
     // Kotlin + coroutines
