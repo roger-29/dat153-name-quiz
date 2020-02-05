@@ -8,17 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import io.roger.quiz.MyNameRecyclerViewAdapter
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import io.roger.quiz.adapters.PersonListViewAdapter
 import io.roger.quiz.R
-import io.roger.quiz.dummy.DummyContent
-// import io.roger.quiz.viewmodels.PersonListViewModel
+import io.roger.quiz.viewmodels.PersonListViewModel
 
 class PersonListFragment : Fragment() {
 
     private var columnCount = 1
 
-//    private val viewModel: PersonListViewModel by viewModels()
+    private lateinit var viewModel: PersonListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,17 +34,23 @@ class PersonListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_overview_list, container, false)
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter =
-                    MyNameRecyclerViewAdapter(DummyContent.ITEMS)
-            }
+        val recyclerView: RecyclerView = view as RecyclerView
+        val adapter = PersonListViewAdapter()
+
+        recyclerView.layoutManager = when {
+            columnCount <= 1 -> LinearLayoutManager(context)
+            else -> GridLayoutManager(context, columnCount)
         }
+        recyclerView.adapter = adapter
+
+        // Get a new or existing ViewModel from the ViewModelProvider.
+        viewModel = ViewModelProvider(this).get(PersonListViewModel::class.java)
+
+        viewModel.allPersons.observe(viewLifecycleOwner, Observer { persons ->
+            // Update the cached copy of the words in the adapter.
+            persons?.let { adapter.setPersons(it) }
+        })
+
         return view
     }
 
