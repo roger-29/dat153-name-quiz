@@ -27,9 +27,6 @@ class QuizFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(PersonListViewModel::class.java)
         return inflater.inflate(R.layout.fragment_quiz, container, false)
     }
-    init {
-        upadteUi(0)
-    }
 
     private fun upadteUi(index: Int) {
         with(viewModel.allPersons.value?.get(index)) {
