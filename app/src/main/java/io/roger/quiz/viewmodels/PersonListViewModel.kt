@@ -5,5 +5,5 @@ import androidx.lifecycle.ViewModel
 import io.roger.quiz.data.Person
 
 class PersonListViewModel : ViewModel() {
-    val person = LiveData<Person>
+   // val person = LiveData<Person>
 }
