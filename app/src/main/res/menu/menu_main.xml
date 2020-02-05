@@ -4,17 +4,17 @@
     tools:context="io.roger.quiz.MainActivity">
 
     <item
-        android:id="@+id/action_overview"
-        android:orderInCategory="100"
+        android:id="@+id/people"
+        android:orderInCategory="1"
         android:title="@string/overview_tab_title"
         android:icon="@drawable/ic_baseline_storage_24"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_quiz"
-        android:orderInCategory="100"
+        android:id="@+id/quiz"
+        android:orderInCategory="2"
         android:title="@string/quiz_tab_title"
         android:icon="@drawable/ic_baseline_videogame_asset_24"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
 
 </menu>

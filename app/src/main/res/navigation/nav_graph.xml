@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/quiz">
+
+    <fragment
+        android:id="@+id/quiz"
+        android:name="io.roger.quiz.fragments.QuizFragment"
+        android:label="fragment_quiz"
+        tools:layout="@layout/fragment_quiz">
+        <action
+            android:id="@+id/action_quiz_to_people"
+            app:destination="@id/people" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/people"
+        android:name="io.roger.quiz.fragments.PersonListFragment"
+        android:label="fragment_people"
+        tools:layout="@layout/fragment_overview">
+        <action
+            android:id="@+id/action_people_to_quiz"
+            app:destination="@id/quiz" />
+    </fragment>
 
 </navigation>
