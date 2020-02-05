@@ -15,7 +15,7 @@
             android:layout_width="364dp"
             android:layout_height="340dp"
             android:layout_marginTop="24dp"
-            android:background="#DD3D3D"
+            
             android:scaleType="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
