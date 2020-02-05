@@ -1,11 +1,11 @@
 [
   {
-    "id": "0",
+    "id": 0,
     "name": "Artin Molland",
     "photo": "artinmolland.png"
   },
   {
-    "id": "1",
+    "id": 1,
     "name": "Arne Beyati",
     "photo": "arnebeyati.png"
   }
