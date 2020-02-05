@@ -34,7 +34,8 @@ class PersonListFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_overview_list, container, false)
 
-        val recyclerView: RecyclerView = view as RecyclerView
+        val recyclerView = view.findViewById<RecyclerView>(R.id.list)
+
         val adapter = PersonListViewAdapter()
 
         recyclerView.layoutManager = when {
