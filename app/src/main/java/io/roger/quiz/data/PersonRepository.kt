@@ -1,19 +1,12 @@
 package io.roger.quiz.data
 
+import androidx.annotation.WorkerThread
+import androidx.lifecycle.LiveData
+
 class PersonRepository private constructor(private val personDao: PersonDao) {
-    fun getPersons() = personDao.getPersons()
+    val allPersons: LiveData<List<Person>> = personDao.getAll()
 
-    fun getPerson(personId: String) = personDao.getPerson(personId)
-
-    companion object {
-
-        // For Singleton instantiation
-        @Volatile
-        private var instance: PersonRepository? = null
-
-        fun getInstance(personDao: PersonDao) =
-            instance ?: synchronized(this) {
-                instance ?: PersonRepository(personDao).also { instance = it }
-            }
+    suspend fun insert(person: Person) {
+        personDao.insert(person)
     }
 }
