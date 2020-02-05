@@ -12,13 +12,13 @@ import androidx.fragment.app.viewModels
 import io.roger.quiz.MyNameRecyclerViewAdapter
 import io.roger.quiz.R
 import io.roger.quiz.dummy.DummyContent
-import io.roger.quiz.viewmodels.PersonListViewModel
+// import io.roger.quiz.viewmodels.PersonListViewModel
 
 class PersonListFragment : Fragment() {
 
     private var columnCount = 1
 
-    private val viewModel: PersonListViewModel by viewModels()
+//    private val viewModel: PersonListViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
