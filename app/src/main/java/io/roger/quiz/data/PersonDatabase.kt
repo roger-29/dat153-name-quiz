@@ -15,7 +15,7 @@ import io.roger.quiz.utilities.DATABASE_NAME
 */
 @Database(entities = [Person::class], version = 1, exportSchema = false)
 abstract class PersonDatabase : RoomDatabase() {
-    abstract fun personDao(): PersonDao
+    abstract val personDao: PersonDao
 
     companion object {
 

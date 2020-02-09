@@ -3,9 +3,9 @@
     tools:context="io.roger.quiz.fragments.AddPersonFragment">
 
     <data>
-
-
-
+        <variable
+            name="viewModel"
+            type="io.roger.quiz.viewmodels.AddViewModel" />
     </data>
 
     <LinearLayout
@@ -25,6 +25,7 @@
             android:hint="@string/enter_name_here"/>
 
         <Button
+            android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add_person" />

@@ -23,6 +23,15 @@
         <action
             android:id="@+id/action_people_to_quiz"
             app:destination="@id/quiz" />
+        <action
+            android:id="@+id/action_people_to_addPerson"
+            app:destination="@id/addPerson" />
     </fragment>
+
+    <fragment
+        android:id="@+id/addPerson"
+        android:name="io.roger.quiz.fragments.AddPersonFragment"
+        android:label="fragment_add_person"
+        tools:layout="@layout/fragment_add_person" />
 
 </navigation>

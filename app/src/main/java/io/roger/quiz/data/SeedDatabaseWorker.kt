@@ -25,7 +25,7 @@ class SeedDatabaseWorker(
                     val personList: List<Person> = Gson().fromJson(jsonReader, personType)
 
                     val database = PersonDatabase.getInstance(applicationContext)
-                    database.personDao().insertAll(personList)
+                    database.personDao.insertAll(personList)
                     print("Hello ")
                     Result.success()
                 }
