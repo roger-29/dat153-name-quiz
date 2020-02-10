@@ -71,6 +71,4 @@ class AddPersonFragment : Fragment() {
             //binding.selectedImage.setImageURI(fullPhotoUri)
         }
     }
-
-
 }
