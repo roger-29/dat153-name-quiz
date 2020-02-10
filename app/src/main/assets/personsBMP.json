@@ -1,0 +1,12 @@
+[
+  {
+    "id": 0,
+    "name": "Daenerys Targaryen",
+    "photo": "daenerys"
+  },
+  {
+    "id": 1,
+    "name": "Jon Snow",
+    "photo": "jonsnow"
+  }
+]

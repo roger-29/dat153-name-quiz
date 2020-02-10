@@ -16,4 +16,5 @@
     <string name="add_person_here">Add person here</string>
     <string name="enter_name_here">Enter name here</string>
     <string name="add_person">Add person</string>
+    <string name="select_image">Select image</string>
 </resources>
