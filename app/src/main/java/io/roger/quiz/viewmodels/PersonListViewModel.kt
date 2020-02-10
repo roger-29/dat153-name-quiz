@@ -28,9 +28,11 @@ class PersonListViewModel(application: Application) : AndroidViewModel(applicati
         repository.insert(person)
     }
 
-    fun moveToAddFragClicker(view: View){
+    fun moveToAddFragClicker(view: View) {
         view.findNavController()
-            .navigate(PersonListFragmentDirections
-                .actionPeopleToAddPerson())
+            .navigate(
+                PersonListFragmentDirections
+                    .actionPeopleToAddPerson()
+            )
     }
 }

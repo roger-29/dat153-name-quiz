@@ -43,7 +43,7 @@ class QuizFragment : Fragment() {
 
         viewModel.allPersons.observe(viewLifecycleOwner, Observer { persons ->
 
-            persons?.let { persons ->
+            persons?.let {
                 val randomPerson = persons.random()
 
                 val imageView = view.findViewById<ImageView>(R.id.randomImageView)
