@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import io.roger.quiz.R
@@ -48,18 +49,24 @@ class QuizFragment : Fragment() {
                 val imageView = view.findViewById<ImageView>(R.id.randomImageView)
                 val textBox = view.findViewById<EditText>(R.id.editTextTextPersonName)
                 val goButton = view.findViewById<Button>(R.id.button)
+                val scoreText = view.findViewById<TextView>(R.id.scoreText)
+
+                scoreText.text = score.toString()
 
                 goButton.setOnClickListener{
                     if (textBox.text.toString().toLowerCase() == randomPerson.name.toLowerCase()) {
                         score++
                         Log.e("Yay", "Yay $score")
                     }
+
+                    scoreText.text = score.toString()
                 }
 
                 // Get Android resource ID
                 val context: Context = imageView.context
                 val imageId: Int = context.resources
                     .getIdentifier(randomPerson.photo, "drawable", context.packageName)
+
 
                 imageView.setImageResource(imageId)
             }
