@@ -1,5 +1,7 @@
 package io.roger.quiz.fragments
 
+import android.content.Context
+import android.graphics.*
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +31,8 @@ class PersonListFragment : Fragment() {
     private lateinit var binding: FragmentOverviewListBinding
     private lateinit var viewModel: PersonListViewModel
     private lateinit var adapter: PersonListViewAdapter
+
+    val paint = Paint()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,6 +99,69 @@ class PersonListFragment : Fragment() {
 //                val position = viewHolder.adapterPosition
 //                photosList.removeAt(position)
 //                recyclerView.adapter!!.notifyItemRemoved(position)
+            }
+
+            //Code from https://demonuts.com/kotlin-recyclerview-swipe-to-delete/
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+                val icon: Bitmap
+                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+
+                    val itemView = viewHolder.itemView
+                    val height = itemView.bottom.toFloat() - itemView.top.toFloat()
+                    val width = height / 3
+
+                    if (dX > 0) {
+                        paint.color = Color.parseColor("#388E3C")
+                        val background =
+                            RectF(itemView.left.toFloat(), itemView.top.toFloat(), dX, itemView.bottom.toFloat())
+                        c.drawRect(background, paint)
+                        icon = BitmapFactory.decodeResource(resources, R.drawable.delete)
+
+                        val icon_dest = RectF(
+                            itemView.left.toFloat() + width,
+                            itemView.top.toFloat() + width,
+                            itemView.left.toFloat() + 2 * width,
+                            itemView.bottom.toFloat() - width
+                        )
+                        c.drawBitmap(icon, null, icon_dest, paint)
+                    } else {
+                        paint.color = Color.parseColor("#D32F2F")
+                        val background = RectF(
+                            itemView.right.toFloat() + dX,
+                            itemView.top.toFloat(),
+                            itemView.right.toFloat(),
+                            itemView.bottom.toFloat()
+                        )
+                        c.drawRect(background, paint)
+                        Log.i("PersonListFragment","${R.drawable.delete}")
+                        icon = context?.let { ContextCompat.getDrawable(it, R.drawable.delete)?.toBitmap() } ?: throw Exception("No drawable recieved")
+                        val icon_dest = RectF(
+                            itemView.right.toFloat() - 2 * width,
+                            itemView.top.toFloat() + width,
+                            itemView.right.toFloat() - width,
+                            itemView.bottom.toFloat() - width
+                        )
+                        c.drawBitmap(icon, null, icon_dest, paint)
+                    }
+                }
+
+                super.onChildDraw(
+                    c,
+                    recyclerView,
+                    viewHolder,
+                    dX,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                )
             }
         }
 
