@@ -1,6 +1,5 @@
 package io.roger.quiz.data
 
-import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 
 class PersonRepository(private val personDao: PersonDao) {
