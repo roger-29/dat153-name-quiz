@@ -49,9 +49,13 @@ class QuizFragment : Fragment() {
         imageView.setImageBitmap(bitmap)
     }
 
+    private fun setScoreTextField(score: Int) {
+        scoreText.text = "${SCORE_TEXT_PREFIX}${score}"
+    }
+
     private fun updateScore(inc: Int = 1) {
         score += inc
-        scoreText.text = SCORE_TEXT_PREFIX + score
+        setScoreTextField(score)
     }
 
     private fun nextPerson(persons: List<Person>) {
@@ -102,7 +106,8 @@ class QuizFragment : Fragment() {
                 nextPerson(persons)
 
                 // Set initial view data
-                scoreText.text = SCORE_TEXT_PREFIX + score.toString()
+                setScoreTextField(score)
+
                 updateImageWithPerson(currentPerson, binding.randomImageView)
 
                 binding.button.setOnClickListener{
