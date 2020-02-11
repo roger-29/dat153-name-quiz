@@ -16,4 +16,4 @@ jobs:
     - name: setup-android
       uses: msfjarvis/setup-android@0.2
     - name: Build with Gradle
-      run: ./gradlew build
+      run: sudo ./gradlew build
