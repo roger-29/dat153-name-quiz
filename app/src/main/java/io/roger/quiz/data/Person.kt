@@ -6,9 +6,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "persons")
 data class Person(
-    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id", index = true) val personId: Int,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id", index = true)
+    val personId: Long = 0L,
     val name: String = "",
-    val photo: String = ""
+    var photo: String = ""
 ) {
 
     fun isCorrectName(answer: String): Boolean = answer == name

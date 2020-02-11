@@ -1,6 +1,5 @@
 package io.roger.quiz.adapters
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +9,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.roger.quiz.R
 import io.roger.quiz.data.Person
+import io.roger.quiz.utilities.ImageUtil
 import kotlinx.android.synthetic.main.list_item.view.*
 
 class PersonListViewAdapter internal constructor(
 ) : RecyclerView.Adapter<PersonListViewAdapter.PersonViewHolder>() {
 
-    // private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var persons = emptyList<Person>()
 
     inner class PersonViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -36,15 +35,13 @@ class PersonListViewAdapter internal constructor(
     override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
         val person = persons[position]
 
-        // Get Android resource ID
-        val context: Context = holder.photoView.context
-        val imageId: Int = context.resources
-            .getIdentifier(person.photo, "drawable", context.packageName)
+        val bitmap = ImageUtil.decodeRoomImageToBitmap(person.photo)
 
-        Log.e(imageId.toString(), imageId.toString())
+        Log.e("PersonListViewAdapter","${person.name} fail")
 
-        holder.photoView.setImageResource(imageId)
+        holder.photoView.setImageBitmap(bitmap)
         holder.nameView.text = person.name
+
     }
 
     internal fun setPersons(persons: List<Person>) {
