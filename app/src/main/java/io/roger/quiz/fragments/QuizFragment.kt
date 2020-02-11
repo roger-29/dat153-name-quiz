@@ -62,7 +62,7 @@ class QuizFragment : Fragment() {
             nextPerson(persons)
             updateImageWithPerson(currentPerson, binding.randomImageView)
         } else {
-            Toast.makeText(context, "Oof, wrong 😳", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Oof, wrong 😳 Correct is: " + currentPerson.name, Toast.LENGTH_SHORT).show()
 
             nextPerson(persons)
             updateImageWithPerson(currentPerson, binding.randomImageView)
