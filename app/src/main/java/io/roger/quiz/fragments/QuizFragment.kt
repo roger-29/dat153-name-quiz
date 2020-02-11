@@ -6,9 +6,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import io.roger.quiz.data.Person
 import io.roger.quiz.databinding.FragmentQuizBinding
 import io.roger.quiz.utilities.ImageUtil
 import io.roger.quiz.viewmodels.QuizViewModel
@@ -23,7 +26,48 @@ class QuizFragment : Fragment() {
 
     private var score = 0
 
-    // private var currentPerson: Person = Person()
+    private lateinit var currentPerson: Person
+
+    private fun checkIfCorrect(person: Person, answer: String): Boolean {
+        if (person.name.toLowerCase() == answer.toLowerCase()) {
+            return true
+        }
+
+        return false
+    }
+
+    private fun updateImageWithPerson(person: Person, imageView: ImageView) {
+        val bitmap: Bitmap = ImageUtil.decodeRoomImageToBitmap(person.photo)
+
+        imageView.setImageBitmap(bitmap)
+    }
+
+    private fun updateScore(inc: Int = 1) {
+        score += inc
+        scoreText.text = SCORE_TEXT_PREFIX + score
+    }
+
+    private fun nextPerson(persons: List<Person>) {
+        currentPerson = persons.random()
+    }
+
+    private fun goButtonOnClick(persons: List<Person>) {
+        val currentAnswer = binding.editTextTextPersonName.text.toString()
+        val isCorrectAnswer = checkIfCorrect(currentPerson, currentAnswer)
+
+        if (isCorrectAnswer) {
+            Toast.makeText(context, "Correct 🚀", Toast.LENGTH_SHORT).show()
+
+            updateScore()
+            nextPerson(persons)
+            updateImageWithPerson(currentPerson, binding.randomImageView)
+        } else {
+            Toast.makeText(context, "Oof, wrong 😳", Toast.LENGTH_SHORT).show()
+
+            nextPerson(persons)
+            updateImageWithPerson(currentPerson, binding.randomImageView)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,22 +85,16 @@ class QuizFragment : Fragment() {
             persons?.let {
                 if(persons.isEmpty()) return@let
 
-                val randomPerson = persons.random()
+                // Set initial person
+                nextPerson(persons)
 
-                scoreText.text = score.toString()
+                // Set initial view data
+                scoreText.text = SCORE_TEXT_PREFIX + score.toString()
+                updateImageWithPerson(currentPerson, binding.randomImageView)
 
                 binding.button.setOnClickListener{
-                    if (binding.editTextTextPersonName.text.toString().toLowerCase() == randomPerson.name.toLowerCase()) {
-                        score++
-                        Log.e("Yay", "Yay $score")
-                    }
-
-                    scoreText.text = SCORE_TEXT_PREFIX + score.toString()
+                    goButtonOnClick(persons)
                 }
-
-                val bitmap: Bitmap = ImageUtil.decodeRoomImageToBitmap(randomPerson.photo)
-
-                binding.randomImageView.setImageBitmap(bitmap)
             }
         })
 
