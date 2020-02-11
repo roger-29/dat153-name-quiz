@@ -14,6 +14,8 @@ import io.roger.quiz.utilities.ImageUtil
 import io.roger.quiz.viewmodels.QuizViewModel
 import kotlinx.android.synthetic.main.fragment_quiz.*
 
+val SCORE_TEXT_PREFIX = "Current score: "
+
 class QuizFragment : Fragment() {
 
     private lateinit var binding: FragmentQuizBinding
@@ -49,7 +51,7 @@ class QuizFragment : Fragment() {
                         Log.e("Yay", "Yay $score")
                     }
 
-                    scoreText.text = score.toString()
+                    scoreText.text = SCORE_TEXT_PREFIX + score.toString()
                 }
 
                 val bitmap: Bitmap = ImageUtil.decodeRoomImageToBitmap(randomPerson.photo)
