@@ -107,7 +107,6 @@ class QuizFragment : Fragment() {
 
                 // Set initial view data
                 setScoreTextField(score)
-
                 updateImageWithPerson(currentPerson, binding.randomImageView)
 
                 binding.button.setOnClickListener{
