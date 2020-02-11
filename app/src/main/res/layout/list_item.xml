@@ -6,11 +6,19 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        app:cardBackgroundColor="#ffffff"
+        android:layout_marginTop="5dp"
+        app:cardCornerRadius="1dp">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="36dp">
-
+        
         <ImageView
             android:id="@+id/photo"
             android:layout_width="92dp"
@@ -41,5 +49,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Jon Snow"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

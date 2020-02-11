@@ -11,6 +11,9 @@ import io.roger.quiz.data.Person
 import io.roger.quiz.data.PersonRepository
 import io.roger.quiz.data.PersonDatabase
 import io.roger.quiz.fragments.PersonListFragmentDirections
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 
 class PersonListViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -26,6 +29,12 @@ class PersonListViewModel(application: Application) : AndroidViewModel(applicati
 
     fun insert(person: Person) = viewModelScope.launch {
         repository.insert(person)
+    }
+
+    fun deletePerson(person: Person){
+        viewModelScope.launch {
+            repository.delete(person)
+        }
     }
 
     fun moveToAddFragClicker(view: View) {

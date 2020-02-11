@@ -8,4 +8,8 @@ class PersonRepository(private val personDao: PersonDao) {
     suspend fun insert(person: Person) {
         personDao.insert(person)
     }
+
+    suspend fun delete(person: Person) {
+        personDao.delete(person.personId.toString())
+    }
 }
