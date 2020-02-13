@@ -17,4 +17,11 @@
         android:icon="@drawable/ic_baseline_videogame_asset_24"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/preferences"
+        android:orderInCategory="3"
+        android:title="@string/preferences_tab_title"
+        android:icon="@drawable/preferences"
+        app:showAsAction="always" />
+
 </menu>

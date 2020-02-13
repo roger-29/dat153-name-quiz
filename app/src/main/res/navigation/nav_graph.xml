@@ -33,5 +33,10 @@
         android:name="io.roger.quiz.fragments.AddPersonFragment"
         android:label="fragment_add_person"
         tools:layout="@layout/fragment_add_person" />
+    <fragment
+        android:id="@+id/preferences"
+        android:name="io.roger.quiz.fragments.PreferencesFragment"
+        android:label="fragment_preferences"
+        tools:layout="@layout/fragment_preferences" />
 
 </navigation>

@@ -6,6 +6,7 @@
 
     <string name="quiz_tab_title">Quiz</string>
     <string name="add_tab_title">Add</string>
+    <string name="preferences_tab_title">Preferences</string>
     <string name="quiz_answer_button">Go</string>
     <string name="overview_tab_title">People</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -17,4 +18,9 @@
     <string name="enter_name_here">Enter name here</string>
     <string name="add_person">Add person</string>
     <string name="select_image">Select image</string>
+    <string name="capture_photo">Capture photo</string>
+    <string name="save">Save</string>
+    <string name="preferences">Preferences</string>
+    <string name="your_name">Your name</string>
+    <string name="preference_file_name_key">io.roger.quiz.NAME_KEY</string>
 </resources>

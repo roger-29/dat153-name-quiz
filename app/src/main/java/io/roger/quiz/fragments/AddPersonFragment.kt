@@ -71,6 +71,10 @@ class AddPersonFragment : Fragment() {
             activity?.let { it1 -> viewModel.getPictureIntent(it1, this) }
         }
 
+        binding.capturePhoto.setOnClickListener {
+            activity?.let { it1 -> viewModel.dispatchTakePictureIntent(it1, this) }
+        }
+
         binding.addButton.setOnClickListener {
             if(binding.nameText.text.toString() == ""){
                 Toast.makeText(context,"Please enter a name", Toast.LENGTH_SHORT).show()
@@ -92,6 +96,7 @@ class AddPersonFragment : Fragment() {
             val imageUri: Uri? = data?.data
             context?.contentResolver?.let {
                 if (imageUri != null) {
+                    Log.i("AddPersonFragment", "imageUri valid")
                     val bitmap: Bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(it, imageUri))
                     viewModel.selectImage(bitmap)
                 }

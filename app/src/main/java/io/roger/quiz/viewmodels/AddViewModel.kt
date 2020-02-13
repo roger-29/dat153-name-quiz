@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -29,6 +30,16 @@ class AddViewModel(val database: PersonDao, application: Application): AndroidVi
         get() = _image
 
     val addButtonClickable = Transformations.map(image) {it != null}
+
+
+
+    fun dispatchTakePictureIntent(activity: FragmentActivity, fragment: Fragment) {
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,"")
+            if (takePictureIntent.resolveActivity(activity.packageManager) != null) {
+                activity.startActivityFromFragment(fragment, takePictureIntent, 1)
+            }
+    }
 
     fun getPictureIntent(activity: FragmentActivity, fragment: Fragment){
         val pictureIntent: Intent = Intent().apply {

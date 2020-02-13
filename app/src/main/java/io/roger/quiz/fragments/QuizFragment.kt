@@ -1,11 +1,15 @@
 package io.roger.quiz.fragments
 
 import android.R
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -18,6 +22,7 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 import io.roger.quiz.data.Person
 import io.roger.quiz.databinding.FragmentQuizBinding
 import io.roger.quiz.utilities.ImageUtil
+import io.roger.quiz.viewmodels.PreferencesViewModel
 import io.roger.quiz.viewmodels.QuizViewModel
 import kotlinx.android.synthetic.main.fragment_quiz.*
 
@@ -30,6 +35,9 @@ class QuizFragment : Fragment() {
 
     private lateinit var binding: FragmentQuizBinding
     private lateinit var viewModel: QuizViewModel
+    private lateinit var preferencesViewModel: PreferencesViewModel
+
+    private var NAME_KEY = "NAME_KEY"
 
     private var score = 0
 
@@ -96,6 +104,7 @@ class QuizFragment : Fragment() {
 
         // Get a new or existing ViewModel from the ViewModelProvider.
         viewModel = ViewModelProvider(this).get(QuizViewModel::class.java)
+        preferencesViewModel = ViewModelProvider(this).get(PreferencesViewModel::class.java)
 
         viewModel.allPersons.observe(viewLifecycleOwner, Observer { persons ->
 
