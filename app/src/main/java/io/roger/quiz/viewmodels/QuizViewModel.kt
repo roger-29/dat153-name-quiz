@@ -7,9 +7,9 @@ import io.roger.quiz.data.Person
 import io.roger.quiz.data.PersonDatabase
 import io.roger.quiz.data.PersonRepository
 
-class QuizViewModel(application: Application): AndroidViewModel(application) {
-
-    private val repository: PersonRepository
+class QuizViewModel(
+    var repository: PersonRepository,
+    application: Application): AndroidViewModel(application) {
 
     val allPersons: LiveData<List<Person>>
 

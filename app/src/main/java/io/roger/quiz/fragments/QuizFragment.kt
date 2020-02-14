@@ -37,8 +37,6 @@ class QuizFragment : Fragment() {
     private lateinit var viewModel: QuizViewModel
     private lateinit var preferencesViewModel: PreferencesViewModel
 
-    private var NAME_KEY = "NAME_KEY"
-
     private var score = 0
 
     private lateinit var currentPerson: Person
