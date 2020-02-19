@@ -15,7 +15,7 @@ class QuizViewModelFactory(
 
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(AddViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(QuizViewModel::class.java)) {
             return QuizViewModel(repository, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

@@ -20,8 +20,12 @@ import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener
 import io.roger.quiz.data.Person
+import io.roger.quiz.data.PersonDatabase
+import io.roger.quiz.data.PersonRepository
 import io.roger.quiz.databinding.FragmentQuizBinding
 import io.roger.quiz.utilities.ImageUtil
+import io.roger.quiz.viewmodelfactories.AddViewModelFactory
+import io.roger.quiz.viewmodelfactories.QuizViewModelFactory
 import io.roger.quiz.viewmodels.PreferencesViewModel
 import io.roger.quiz.viewmodels.QuizViewModel
 import kotlinx.android.synthetic.main.fragment_quiz.*
@@ -101,7 +105,11 @@ class QuizFragment : Fragment() {
         mAdView.loadAd(adRequest)
 
         // Get a new or existing ViewModel from the ViewModelProvider.
-        viewModel = ViewModelProvider(this).get(QuizViewModel::class.java)
+        val application = requireNotNull(this.activity).application
+        val datasource = PersonDatabase.getInstance(application).personDao
+        val personRepository = PersonRepository(datasource)
+        val viewModelFactory = QuizViewModelFactory(personRepository, application)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(QuizViewModel::class.java)
         preferencesViewModel = ViewModelProvider(this).get(PreferencesViewModel::class.java)
 
         viewModel.allPersons.observe(viewLifecycleOwner, Observer { persons ->

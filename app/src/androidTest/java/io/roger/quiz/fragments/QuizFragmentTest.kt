@@ -1,17 +1,20 @@
 package io.roger.quiz.fragments
 
+import androidx.fragment.app.testing.launchFragmentInContainer
 import io.roger.quiz.data.Person
 import io.roger.quiz.data.PersonDatabase
 import io.roger.quiz.data.PersonRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.*
+import androidx.test.espresso.*
+import androidx.test.espresso.matcher.ViewMatchers
+import io.roger.quiz.R
 
 internal class QuizFragmentTest{
 
-    @Test
-    fun scoreUpdate_DisplayedInUI() = runBlocking{
+    @Before
+    fun setupViewModel(){
 
-        //Given
         val person = Person(name = "daenerys targaryen", photo = "iVBORw0KGgoAAAANSUhEUgAAANwAAAE8CAIAAAAkC0jgAAABEWlDQ1BTa2lhAAAokYWRoU7DUBSG\n" +
                 "PwqGhAQEYgJxBQIDAZYQBGqIBlu2ZODarhSStWtuu4wXIBgMBk14CHgFPAEDD4EgaP6uojUb/825\n" +
                 "58vJyb33PxecFpKzBklaWM/tmP7ZuaEhP8wzZmsBfj/KHd625/TN0vIgykPlb0VhdbmOHIjX44qv\n" +
@@ -65,6 +68,18 @@ internal class QuizFragmentTest{
                 "6Qhq52V7f3uTl1WjX5aVGb3DNUv0vlpTtlzqEEZiXeY5L/O8nLcqy3JsOZ+WrdaMoq1Zs8IO2XsC\n" +
                 "XEtx3gUPrSgYIkrkKex6MHUif2oo1RQRERwTCLFDJCUA8MEDAQKKSYVaW6VEMUZz5tmH4FoDVc2m\n" +
                 "RGyqtVUkArOaM/jQkfNMAGDICNj1Q\n")
+
+    }
+
+    @Test
+    fun scoreUpdate_DisplayedInUI() = runBlocking{
+
+        //Given
+//        val bundle = QuizFragmentArgs(activeTask.id).toBundle()
+//        launchFragmentInContainer<QuizFragment>(bundle, R.style.AppTheme)
+//
+//        Espresso.onView(ViewMatchers.withId(R.id))
+
 
 
     }
